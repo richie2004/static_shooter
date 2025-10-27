@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://difod12rvbrdf"]
+
+[ext_resource type="Script" uid="uid://b7qju0ltkdn34" path="res://main/main.gd" id="1_4dugh"]
+[ext_resource type="PackedScene" uid="uid://c233jnxa74dgb" path="res://main/hud.tscn" id="3_grrlh"]
+[ext_resource type="PackedScene" uid="uid://dpekjuu2rnhbf" path="res://main/map.tscn" id="4_0i4oc"]
+[ext_resource type="PackedScene" uid="uid://cp8h7oi57yrb5" path="res://player/glock.tscn" id="5_4dugh"]
+[ext_resource type="Script" uid="uid://txtsb1c6e7ff" path="res://main/camera.gd" id="6_fwcvl"]
+[ext_resource type="Script" uid="uid://crqgd40vrjtvc" path="res://main/spawner.gd" id="6_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://uy7drn87f5s5" path="res://enemy/target_ball.tscn" id="8_grrlh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_4dugh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="UI" parent="." instance=ExtResource("3_grrlh")]
+
+[node name="map" parent="." instance=ExtResource("4_0i4oc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995, 0)
+
+[node name="player" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45475268, 0)
+
+[node name="Camera_rig" type="Node3D" parent="player"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("6_fwcvl")
+
+[node name="Camera3D" type="Camera3D" parent="player/Camera_rig"]
+
+[node name="gun_trial_1" parent="player/Camera_rig/Camera3D" instance=ExtResource("5_4dugh")]
+transform = Transform3D(-0.1, 0, -8.742278e-09, 0, 0.1, 0, 8.742278e-09, 0, -0.1, 0.6299028, -0.29650134, -1.0180558)
+
+[node name="game_manager" type="Node" parent="."]
+
+[node name="spawner" type="Node" parent="."]
+script = ExtResource("6_kfbq2")
+Target_scene = ExtResource("8_grrlh")
+
+[node name="camera_alt" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.9802319e-08, 1, 0, -1, -2.9802319e-08, 0, 12.800263, 0)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://l6pcok334262"]
+
+[ext_resource type="Script" uid="uid://dsoqagclaej0j" path="res://player/checker.gd" id="1_1y6ct"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtl8c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
+albedo_color = Color(0.648912, 0.798003, 0.498409, 1)
+emission_enabled = true
+emission = Color(0.52349, 0.758147, 0.432246, 1)
+emission_energy_multiplier = 2.3
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_rtl8c")
+surface_material_override/0 = SubResource("StandardMaterial3D_v7oki")
+script = ExtResource("1_1y6ct")

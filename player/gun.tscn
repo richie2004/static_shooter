@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl3r5daeouj0v"]
+
+[ext_resource type="PackedScene" uid="uid://b1p5lnunbewrp" path="res://player/gun.blend" id="1_vk1bi"]
+
+[node name="gun" instance=ExtResource("1_vk1bi")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

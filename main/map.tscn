@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpekjuu2rnhbf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6lj2"]
+albedo_color = Color(4.132025e-05, 0.083458625, 0.32901803, 1)
+
+[node name="map" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -2, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_e6lj2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -9.5)
+use_collision = true
+size = Vector3(20, 11, 1)
